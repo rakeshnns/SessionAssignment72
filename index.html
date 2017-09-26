@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment 7.2</title>
+	<script type="text/javascript">
+	    //Outer Most  or Parent function
+		function outermostfunction(text){
+			var text;
+			return function(){              //Inner Function having benifits of parent functions varibales.
+				document.getElementById("message").innerHTML = text;
+			}
+		}
+
+		//Variable get assigned with return function of outermostfunction() passed parameter
+		//goes into text variabled and gets eventually share with text declared inside the
+		// return function.
+		// onfocus functions:
+		var namefn = outermostfunction("Please input the username"); // Closure concept:ƒ (){document.getElementById("message").innerHTML = text;}
+		var agefn = outermostfunction("Please input the age");
+		var cityfn = outermostfunction("Please input the city");
+        
+        //Onblur functions:
+		var nameblur = outermostfunction("<i>Help note will appear here.</i>");
+		var ageblur = outermostfunction("<i>Help note will appear here.</i>");
+		var cityblur = outermostfunction("<i>Help note will appear here.</i>");
+
+	</script>
+</head>
+<body>
+  <p id="message"><i>Help note will appear here.</i></p>
+  <b>Name:</b><input type="text" name="name" id="name" onfocus="namefn()" onblur="nameblur()">
+  <br>
+  <br>
+  <b>Age:</b><input type="text" name="age" id="age" onfocus="agefn()" onblur="ageblur()">
+  <br>
+  <br>   
+  <b>City:</b><input type="text" name="city" id="city" onfocus="cityfn()" onblur="cityblur()"> 
+</body>
+</html>
